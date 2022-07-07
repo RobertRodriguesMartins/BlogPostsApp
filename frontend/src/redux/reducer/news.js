@@ -12,7 +12,7 @@ const newsReducer = (state = initialState, action) => {
     case 'news/all':
       return {
         ...state,
-        allNews: action.payload,
+        allNews: [...state.allNews, ...action.payload],
       };
     case 'news/some':
       return {

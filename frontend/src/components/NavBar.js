@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { BsSearch } from "react-icons/bs";
-import { HiDotsVertical } from "react-icons/hi";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { BsSearch } from 'react-icons/bs';
+import { AiFillCloseSquare } from 'react-icons/ai';
+import { HiDotsVertical } from 'react-icons/hi';
 
 function NavBar() {
   const { pathname } = useLocation();
@@ -9,25 +10,31 @@ function NavBar() {
   const [isNavOpened, setIsNavOpened] = useState(false);
 
   function openNav() {
-    document.getElementsByTagName("nav")[0].setAttribute("class", "sidebar");
+    document.getElementsByTagName('nav')[0].setAttribute('class', 'sidebar');
     document
-      .getElementsByClassName("nav-tools")[0]
-      .setAttribute("class", "temp");
+      .getElementsByClassName('nav-tools')[0]
+      .setAttribute('class', 'temp');
+    document
+      .getElementsByClassName('mobile-nav-menu')[0]
+      .setAttribute('class', 'mobile-nav-menu-opened');
     setIsNavOpened(true);
   }
 
   function closeNav() {
     document
-      .getElementsByClassName("temp")[0]
-      .setAttribute("class", "nav-tools");
-    document.getElementsByTagName("nav")[0].setAttribute("class", "");
+      .getElementsByClassName('temp')[0]
+      .setAttribute('class', 'nav-tools');
+    document.getElementsByTagName('nav')[0].setAttribute('class', 'nav-menu');
+    document
+      .getElementsByClassName('mobile-nav-menu-opened')[0]
+      .setAttribute('class', 'mobile-nav-menu');
     setIsNavOpened(false);
   }
 
   useEffect(() => {
     document
       .getElementById(pathname)
-      .setAttribute("class", "current-nav-section");
+      .setAttribute('class', 'current-nav-section');
   }, [pathname]);
   return (
     <nav className="nav-menu">
@@ -59,7 +66,11 @@ function NavBar() {
         className="mobile-nav-menu"
         onClick={isNavOpened ? closeNav : openNav}
       >
-        <HiDotsVertical className="nav-icon" />
+        {isNavOpened ? (
+          <AiFillCloseSquare className="nav-icon" />
+        ) : (
+          <HiDotsVertical className="nav-icon" />
+        )}
       </section>
     </nav>
   );

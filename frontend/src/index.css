@@ -1,7 +1,6 @@
 html,
 #root,
-body,
-.app {
+body {
   margin: 0;
   height: 100%;
   width: 100%;
@@ -42,6 +41,16 @@ a {
   display: none;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+}
+
 .nav-menu {
   display: flex;
   justify-content: space-around;
@@ -51,6 +60,7 @@ a {
 
 .nav-menu h2 {
   margin: 0;
+  font-family: arial;
 }
 
 .nav-menu ul {
@@ -103,8 +113,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
   height: 100%;
+  margin-bottom: 15px;
   overflow-y: overlay;
 }
 
@@ -215,8 +225,22 @@ a {
   align-items: center;
   display: flex;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+}
+
+.footer-wrapper a {
+  margin: 0px 5px;
+}
+
+.footer-wrapper svg {
+  height: 3em;
+  width: 3em;
+}
+
+.footer-section {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
 }
 
 .app-news-create-wrapper {
@@ -268,6 +292,11 @@ a {
   border-bottom: 5px solid rgba(254, 252, 253, 0.9);
 }
 
+.share-linkedin svg {
+  height: 2em;
+  width: 2em;
+}
+
 @media only screen and (max-width: 760px) {
   .nav-menu {
     justify-content: space-between;
@@ -277,16 +306,43 @@ a {
     display: none;
   }
 
+  .nav-menu h2 {
+    margin: 0 0 0 50px;
+  }
+
+  .sidebar h2 {
+    font-family: arial;
+    margin: 0 25%;
+  }
+
   .mobile-nav-menu {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40px;
     height: 40px;
+    margin: 0 50px 0 0;
+  }
+
+  .mobile-nav-menu-opened {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .mobile-nav-menu-opened svg {
+    height: 2em;
+    width: 2em;
   }
 
   .app-news-card-wrapper {
     width: 100%;
+    margin: 0;
   }
 
   .app-news-card-article-wrapper article {
@@ -314,6 +370,19 @@ a {
     list-style: none;
     padding: unset;
     width: 80%;
+  }
+
+  .search {
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    padding: 0 10px;
+    margin: 0 10px;
+    align-items: center;
+    width: 80%;
+  }
+
+  .footer-section p {
+    font-size: 12px;
   }
 
   #root {
