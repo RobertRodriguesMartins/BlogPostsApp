@@ -75,7 +75,7 @@ export const byIdThunk = (id) => async (dispatch) => {
 
     dispatch(byId(response));
   } catch (e) {
-    dispatch(byId({ message: 'Sem internet' }));
+    console.log(e);
   }
 };
 

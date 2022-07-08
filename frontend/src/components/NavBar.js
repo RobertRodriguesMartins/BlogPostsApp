@@ -32,9 +32,13 @@ function NavBar() {
   }
 
   useEffect(() => {
-    document
-      .getElementById(pathname)
-      .setAttribute('class', 'current-nav-section');
+    try {
+      document
+        .getElementById(pathname)
+        .setAttribute('class', 'current-nav-section');
+    } catch (e) {
+      document.getElementById('/').setAttribute('class', 'current-nav-section');
+    }
   }, [pathname]);
   return (
     <nav className="nav-menu">

@@ -10,6 +10,7 @@ function App() {
   const [maxOffset, setMaxOffset] = useState(0);
   const [loading, setLoading] = useState(0);
   const actualReduxOffset = useSelector((state) => state.news.actualOffset);
+  const allNews = useSelector((state) => state.news.allNews);
   const actualReduxMaxOffset = useSelector((state) => state.news.maxOffset);
 
   function checkIfExists(e, actualOffset, maxOffset) {
@@ -44,9 +45,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    dispatch(someThunk(actualOffset));
-    dispatch(maxOffsetThunk());
-    dispatch(setOffset(actualOffset));
+    if (allNews.length < 1) {
+      dispatch(someThunk(actualOffset));
+      dispatch(maxOffsetThunk());
+      dispatch(setOffset(actualOffset));
+    }
   }, []);
 
   useEffect(() => {
